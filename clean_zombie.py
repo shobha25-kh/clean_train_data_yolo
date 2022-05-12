@@ -19,5 +19,24 @@ def clean_image(path):
                 os.remove(path+x)
  
 clean_image(path)
-#def clean_empty_txt(path):
+def clean_empty_txt(path):
+    dir_list = os.listdir(path)
+    for txt in dir_list:
+        if txt.endswith(".txt"):
+            if not os.path.getsize(path+txt):
+                print(txt)
+                y=os.path.splitext(txt)[0]
+                z = ".jpg"
+                s = y + z
+                k = Path(path+s)
+                print("remove respective image\n",s)
+                if k.is_file():
+                    os.remove(path+s)
+                os.remove(path+txt)
+                #k = Path(path+s)
+            else:
+                pass
+			
+clean_empty_txt(path)
+
     

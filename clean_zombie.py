@@ -1,24 +1,10 @@
+import sys
 import os
 from pathlib import Path
-path = "./obj/" #folder path
 
-def clean_image(path):
-    dir_list = os.listdir(path)
-    for x in dir_list:
-        if x.endswith(".jpg"):
-            #print(x)
-            y=os.path.splitext(x)[0]
-            z = ".txt"
-            s = y + z
-            k = Path(path+s)
-            #print(k)
-            if k.is_file():
-                print("txt file present\n", s)
-            else:
-                print("!!!!!!!!!!!!!!!!removing jpg file!!!!!!!!!!!!\n")
-                os.remove(path+x)
- 
-clean_image(path)
+user_input = input("Enter the path of your file: ")
+assert os.path.exists(user_input),  "\n" + str(user_input) +", This path does not exist"
+
 def clean_empty_txt(path):
     dir_list = os.listdir(path)
     for txt in dir_list:
@@ -26,17 +12,30 @@ def clean_empty_txt(path):
             if not os.path.getsize(path+txt):
                 print(txt)
                 y=os.path.splitext(txt)[0]
-                z = ".jpg"
-                s = y + z
-                k = Path(path+s)
-                print("remove respective image\n",s)
-                if k.is_file():
-                    os.remove(path+s)
+                s = Path(path+y+".jpg")
+                if s.is_file():
+                    print("### removing respective image ###\n",s)
+                    os.remove(s)
                 os.remove(path+txt)
-                #k = Path(path+s)
             else:
-                pass
-			
-clean_empty_txt(path)
+                continue
+
+def clean_image(path):
+    dir_list = os.listdir(path)
+    for x in dir_list:
+        if x.endswith(".jpg"):
+            #print(x)
+            y=os.path.splitext(x)[0]
+            k = Path(path+y+".txt")
+            #print(k)
+            if k.is_file():
+                print("txt file present\n", s)
+            else:
+                print("!!!!!!!!!!!!!!!!removing jpg file!!!!!!!!!!!!\n")
+                os.remove(path+x)
+ 
+clean_image(user_input+"/")
+clean_empty_txt(user_input+"/")
+
 
     

@@ -34,7 +34,7 @@ def clean_image(path):
                 print("!!!!!!!!!!!!!!!!removing jpg file!!!!!!!!!!!!\n")
                 os.remove(path+x)
  
-clean_image(user_input+"/")
+#clean_image(user_input+"/")
 clean_empty_txt(user_input+"/")
 
 

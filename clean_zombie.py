@@ -50,7 +50,7 @@ def clean_image(path):
             k = Path(path+y+".txt")
             #print(k)
             if k.is_file():
-                print("txt file present\n", s)
+                print("txt file present\n", k)
             else:
                 print("!!!!!!!!!!!!!!!!removing jpg file!!!!!!!!!!!!\n")
                 os.remove(path+x)
